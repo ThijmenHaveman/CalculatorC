@@ -9,7 +9,6 @@ int main()
 
     printf("Enter two integers and the operation you would like to perform:\n");
 
-    // expecting 1 int, 1 int, and 1 char (operation) on separate inputs / lines
     char op;
     printf("Enter operation (+, -, *, /): ");
     scanf_s("%c", &op, 1);
@@ -25,24 +24,17 @@ int main()
     diff = num1 - num2;
     mult = num1 * num2;
     quot = num1 / num2;
-
-    if (op == '+')
-    {
+switch (op) {
+    case '+':
         printf("Sum: %d\n", sum);
         success = 1;
-    }
-    else if (op == '-')
-    {
+    case '-':
         printf("Difference: %d\n", diff);
         success = 1;
-    }
-    else if (op == '*')
-    {
+    case '*':
         printf("%d %c %d = %d\n", num1, op, num2, mult);
         success = 1;
-    }
-    else if (op == '/')
-    {
+    case '/':
         if (num2 == 0)
         {
             printf("Error: Division by zero.\n");
@@ -52,15 +44,13 @@ int main()
             printf("%d %c %d = %.2f\n", num1, op, num2, quot);
             success = 1;
         }
-    }
-    else
-    {
-        printf("Invalid operation.\n");
-        printf("Valid operations are: +, -, *, /\n");
-        printf("Please try again.\n");
-        main();
-        return 0;
-    }
+default:
+    printf("Invalid operation.\n");
+    printf("Valid operations are: +, -, *, /\n");
+    printf("Please try again.\n");
+    main();
+    return 0;
+}
 
     // does the user want to perform another calculation?
     if (success)
